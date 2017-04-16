@@ -61,12 +61,75 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.blocked">module blocked</a><ol>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.blocked.blocked">
+            function <span class="apidocSignatureSpan"></span>blocked
+            <span class="apidocSignatureSpan">(fn, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.blocked.toString">
+            function <span class="apidocSignatureSpan">blocked.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.blocked" id="apidoc.module.blocked">module blocked</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.blocked.blocked" id="apidoc.element.blocked.blocked">
+        function <span class="apidocSignatureSpan"></span>blocked
+        <span class="apidocSignatureSpan">(fn, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">blocked = function (fn, options) {
+    var opts = options || {};
+    var start = process.hrtime();
+    var interval = 100;
+    var threshold = opts.threshold || 10;
+
+    return setInterval(function () {
+        var delta = process.hrtime(start);
+        var nanosec = delta[0] * 1e9 + delta[1];
+        var ms = nanosec / 1e6;
+        var n = ms - interval;
+
+        if (n &#x3e; threshold) {
+            fn(Math.round(n));
+        }
+        start = process.hrtime();
+    }, interval).unref();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.blocked.toString" id="apidoc.element.blocked.toString">
+        function <span class="apidocSignatureSpan">blocked.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return toString;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 </div>
 
